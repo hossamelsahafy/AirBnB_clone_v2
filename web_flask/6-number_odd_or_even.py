@@ -52,6 +52,7 @@ def number_template(n):
 def number_odd_or_even(n):
     """Function To Define The Integer As Even Or Odd"""
     if n.isdigit():
+        n = int(n)
         if n % 2 == 0:
             return render_template(
                 '6-number_odd_or_even.html', n=n, parity='even')
