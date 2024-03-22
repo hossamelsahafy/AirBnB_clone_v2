@@ -48,5 +48,17 @@ def number_template(n):
         return "Not Found", 404
 
 
+@app.route('/number_odd_or_even/<n>', strict_slashes=False)
+def number_odd_or_even(n):
+    """Function To Define The Integer As Even Or Odd"""
+    if n.isdigit():
+        if n % 2 == 0:
+            return "Number: {} is odd".format(n)
+        elif n % 2 != 0:
+            return "Number: {} is even".format(n)
+    else:
+        return "Not Found", 404
+
+
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000)
