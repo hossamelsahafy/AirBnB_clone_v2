@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """script that starts a Flask web application"""
-from flask import Flask, render_template, abort
+from flask import Flask, render_template
 app = Flask(__name__)
 
 
@@ -44,6 +44,8 @@ def number_template(n):
     """Function That Render Template"""
     if n.isdigit():
         return render_template('5-number.html', n=n)
+    else:
+        return "Not Found", 404
 
 
 if __name__ == "__main__":
