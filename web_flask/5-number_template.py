@@ -44,9 +44,6 @@ def number_template(n):
     """Function That Render Template"""
     if n.isdigit():
         return render_template('5-number.html', n=n)
-    else:
-        return abort(404, description="Resource not found. Please ensure the\
-path is correct and try again.")
 
 
 if __name__ == "__main__":
