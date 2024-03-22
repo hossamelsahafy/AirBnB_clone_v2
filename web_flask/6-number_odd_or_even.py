@@ -53,9 +53,11 @@ def number_odd_or_even(n):
     """Function To Define The Integer As Even Or Odd"""
     if n.isdigit():
         if n % 2 == 0:
-            return "Number: {} is odd".format(n)
+            return render_template('6-number_odd_or_even.html',
+                                   n=n, parity='even')
         elif n % 2 != 0:
-            return "Number: {} is even".format(n)
+            return render_template('6-number_odd_or_even.html',
+                                   n=n, parity='odd')
     else:
         return "Not Found", 404
 
