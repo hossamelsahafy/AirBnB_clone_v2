@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """script that starts a Flask web application"""
-from flask import Flask, render_template
+from flask import Flask, render_template, abort
 app = Flask(__name__)
 
 
@@ -45,7 +45,8 @@ def number_template(n):
     if n.isdigit():
         return render_template('5-number.html', n=n)
     else:
-        return "Not Found", 404
+        return abort(404, description="Resource not found. Please ensure the\
+path is correct and try again.")
 
 
 if __name__ == "__main__":
