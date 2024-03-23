@@ -59,7 +59,6 @@ class DBStorage:
         """add a new element to the table"""
         self.__session.add(obj)
 
-
     def delete(self, obj=None):
         """delete an element from the table"""
         if obj:
