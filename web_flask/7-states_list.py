@@ -9,6 +9,9 @@ from flask import render_template
 
 app = Flask(__name__)
 
+@app.route("/", strict_slashes=False)
+def Hello():
+    return "Hello HBNB"
 
 @app.route("/states_list", strict_slashes=False)
 def states_list():
