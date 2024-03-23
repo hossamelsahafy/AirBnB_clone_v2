@@ -67,7 +67,10 @@ class DBStorage:
 
     def close(self):
         """ close method"""
-        self.__session.close()
+        if hasattr(self.__session, "remove"):
+            self.__session.remove()
+        elif hasattr(self.__session, "close"):
+            self.__session.close()
 
     def reload(self):
         """configuration"""
