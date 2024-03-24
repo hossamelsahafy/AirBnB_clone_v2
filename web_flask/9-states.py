@@ -20,8 +20,12 @@ def states():
 def state_Id(id):
     all_states = storage.all("State").values()
     state = next((s for s in all_states if s.id == id), None)
-    cities = sorted(state.cities, key=lambda city: city.name)
-    return render_template('9-states.html', state=state, cities=cities)
+    if state is None:
+        return render_template('9-states.html')
+    else:
+        cities = sorted(state.cities, key=lambda city: city.name)
+        return render_template('9-states.html', state=state, cities=cities)
+
 
 
 @app.teardown_appcontext
