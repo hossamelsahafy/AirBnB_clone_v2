@@ -1,45 +1,32 @@
 #!/usr/bin/python3
 """
-script that starts a Flask web application
+Starts a Flask web application.
 """
-from flask import Flask, render_template
 from models import storage
+from flask import Flask
+from flask import render_template
 
 app = Flask(__name__)
-app.url_map.strict_slashes = False
 
 
-@app.route('/states')
+@app.route("/states", strict_slashes=False)
 def states():
-    """
-    States
-    """
-    states = storage.all("State").values()
-    states = sorted(states, key=lambda state: state.name)
-    return render_template('9-states.html', states=states)
+    states = storage.all("State")
+    return render_template("9-states.html", state=states)
 
 
-@app.route('/states/<id>')
-def state_Id(id):
-    """
-    State Id
-    """
-    all_states = storage.all("State").values()
-    state = next((s for s in all_states if s.id == id), None)
-    if state is None:
-        return render_template('9-states.html')
-    else:
-        cities = sorted(state.cities, key=lambda city: city.name)
-        return render_template('9-states.html', state=state, cities=cities)
+@app.route("/states/<id>", strict_slashes=False)
+def states_id(id):
+    for state in storage.all("State").values():
+        if state.id == id:
+            return render_template("9-states.html", state=state)
+    return render_template("9-states.html")
 
 
 @app.teardown_appcontext
-def teardown_db(exception):
-    """
-    Close
-    """
+def teardown(exc):
     storage.close()
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host="0.0.0.0")
