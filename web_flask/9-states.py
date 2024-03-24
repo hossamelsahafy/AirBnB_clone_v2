@@ -27,7 +27,6 @@ def state_Id(id):
         return render_template('9-states.html', state=state, cities=cities)
 
 
-
 @app.teardown_appcontext
 def teardown_db(exception):
     storage.close()
