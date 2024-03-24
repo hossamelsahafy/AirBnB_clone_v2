@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-starts a Flask web application
+starts a Flask web application.
 """
 
 from models import storage
