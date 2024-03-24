@@ -11,6 +11,9 @@ app.url_map.strict_slashes = False
 
 @app.route('/states')
 def states():
+    """
+    States
+    """
     states = storage.all("State").values()
     states = sorted(states, key=lambda state: state.name)
     return render_template('9-states.html', states=states)
@@ -18,6 +21,9 @@ def states():
 
 @app.route('/states/<id>')
 def state_Id(id):
+    """
+    State Id
+    """
     all_states = storage.all("State").values()
     state = next((s for s in all_states if s.id == id), None)
     if state is None:
@@ -29,6 +35,9 @@ def state_Id(id):
 
 @app.teardown_appcontext
 def teardown_db(exception):
+    """
+    Close
+    """
     storage.close()
 
 
